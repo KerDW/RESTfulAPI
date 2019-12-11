@@ -56,12 +56,12 @@ namespace RESTful1
 
         public static List<telefon> SearchContactesByPhone(string phone)
         {
-            List<telefon> lt = dataContext.telefons.Where(x => x.telefon1.Contains(phone)).ToList();
+            List<telefon> lt = dataContext.telefons.Where(x => x.telefon1.Contains(phone) || x.tipus.Contains(phone)).ToList();
             return lt;
         }
         public static List<email> SearchContactesByEmail(string email)
         {
-            List<email> le = dataContext.emails.Where(x => x.email1.Contains(email)).ToList();
+            List<email> le = dataContext.emails.Where(x => x.email1.Contains(email) || x.tipus.Contains(email)).ToList();
             return le;
         }
 
