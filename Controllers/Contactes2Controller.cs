@@ -242,6 +242,7 @@ namespace RESTful1.Controllers
             return response;
         }
 
+        [Route("api/websocket")]
         // WebSockets: Socket api call wss://host:port/api/websocket?nom={name}
         public HttpResponseMessage Get(string nom)
         {
