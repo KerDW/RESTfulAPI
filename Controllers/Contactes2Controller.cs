@@ -243,9 +243,9 @@ namespace RESTful1.Controllers
         }
 
         // WebSockets: Socket api call wss://host:port/api/websocket?nom={name}
-        public HttpResponseMessage Get(string name)
+        public HttpResponseMessage Get(string nom)
         {
-            HttpContext.Current.AcceptWebSocketRequest(new SocketHandler(name)); return new HttpResponseMessage(HttpStatusCode.SwitchingProtocols);
+            HttpContext.Current.AcceptWebSocketRequest(new SocketHandler(nom)); return new HttpResponseMessage(HttpStatusCode.SwitchingProtocols);
         }
         private class SocketHandler : WebSocketHandler
         {
