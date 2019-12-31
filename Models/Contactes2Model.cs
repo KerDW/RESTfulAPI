@@ -9,30 +9,39 @@ namespace RESTful1
 {
     public class ContactesRepository
     {
-        private static Contactes2Entities dataContext = new Contactes2Entities();
         public static List<contacte> GetAllContactes()
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             List<contacte> lc = dataContext.contactes.ToList();
             return lc;
         }
 
         public static contacte GetContacte(int contacteID)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             contacte c = dataContext.contactes.Where(x => x.contacteId == contacteID).SingleOrDefault();
             return c;
         }
         public static telefon GetPhone(int telID)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             telefon t = dataContext.telefons.Where(x => x.telId == telID).SingleOrDefault();
             return t;
         }
         public static email GetEmail(int emailId)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             email e = dataContext.emails.Where(x => x.emailId == emailId).SingleOrDefault();
             return e;
         }
         public static bool contacteHasForeign(int contacteID)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             contacte c = dataContext.contactes.Where(x => x.contacteId == contacteID).SingleOrDefault();
 
             foreach (email em in dataContext.emails.Where(x => x.contacteId == contacteID))
@@ -50,23 +59,31 @@ namespace RESTful1
 
         public static List<contacte> SearchContactesByName(string contacteName)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             List<contacte> lc = dataContext.contactes.Where(x => x.nom.Contains(contacteName) || x.cognoms.Contains(contacteName)).ToList();
             return lc;
         }
 
         public static List<telefon> SearchContactesByPhone(string phone)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             List<telefon> lt = dataContext.telefons.Where(x => x.telefon1.Contains(phone) || x.tipus.Contains(phone)).ToList();
             return lt;
         }
         public static List<email> SearchContactesByEmail(string email)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             List<email> le = dataContext.emails.Where(x => x.email1.Contains(email) || x.tipus.Contains(email)).ToList();
             return le;
         }
 
         public static contacte InsertContacte(contacte c)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             try
             {
                 dataContext.contactes.Add(c);
@@ -80,6 +97,8 @@ namespace RESTful1
         }
         public static contacte UpdateContacte(int id, contacte c)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             try
             {
                 contacte c0 = dataContext.contactes.Where(x => x.contacteId == id).SingleOrDefault();
@@ -96,6 +115,8 @@ namespace RESTful1
         }
         public static telefon UpdatePhone(int id, telefon t)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             try
             {
                 telefon t0 = dataContext.telefons.Where(x => x.telId == id).SingleOrDefault();
@@ -113,6 +134,8 @@ namespace RESTful1
         }
         public static email UpdateMail(int id, email e)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             try
             {
                 email e0 = dataContext.emails.Where(x => x.emailId == id).SingleOrDefault();
@@ -131,6 +154,8 @@ namespace RESTful1
 
         public static contacte CreateContacte(contacte c)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             try
             {
                 dataContext.contactes.Add(c);
@@ -145,6 +170,8 @@ namespace RESTful1
         }
         public static email CreateMail(email e)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             try
             {
                 dataContext.emails.Add(e);
@@ -159,6 +186,8 @@ namespace RESTful1
         }
         public static telefon CreatePhone(telefon t)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             try
             {
                 dataContext.telefons.Add(t);
@@ -173,6 +202,8 @@ namespace RESTful1
         }
         public static void DeleteContacte(int id)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             contacte c = dataContext.contactes.Where(x => x.contacteId == id).SingleOrDefault();
 
             dataContext.contactes.Remove(c);
@@ -180,6 +211,8 @@ namespace RESTful1
         }
         public static void DeleteContacteTot(int id)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             contacte c = dataContext.contactes.Where(x => x.contacteId == id).SingleOrDefault();
 
             foreach (email em in dataContext.emails.Where(x => x.contacteId == id))
@@ -197,6 +230,8 @@ namespace RESTful1
         }
         public static void DeleteEmail(int id)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             email e = dataContext.emails.Where(x => x.emailId == id).SingleOrDefault();
 
             dataContext.emails.Remove(e);
@@ -204,6 +239,8 @@ namespace RESTful1
         }
         public static void DeletePhone(int id)
         {
+            Contactes2Entities dataContext = new Contactes2Entities();
+
             telefon t = dataContext.telefons.Where(x => x.telId == id).SingleOrDefault();
 
             dataContext.telefons.Remove(t);
